@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript</title>
+    <script>
+        var date=new Date();
+        var day=date.getDate();
+        var month=date.getMonth();
+        var year=date.getFullYear();
+        document.write("<br>Date is: "+day+"/"+month+"/"+year);
+
+        function printvalue(){
+            var first_name = document.my_form.first_name.value;
+            var last_name = document.my_form.last_name.value;
+            alert("Welcome: " + first_name + " " + last_name)
+        }
+
+        function valid_date(){
+            var msg;
+            if(document.next_form.User_Pass.value.length>5){
+                msg = "good";
+            }
+            else{
+                msg = "poor";
+            }
+            document.getElementById('my_location').innerText.msg;
+        }
+    </script>
+</head>
+<body>
+<form name = "my_form">
+    first name: <input type="text" name="first_name"/>
+    <br>
+    last name: <input type="text" name="last_name"/>
+    <br>
+    <input type="button" onclick="printvalue()" value="print name"/>
+</form>
+
+<br>
+
+<form name = "next_form">
+    Password: <input type="password" name="User_Pass" onkeyup="valid_date()"/>
+    Strength: <span id="my_location">no strength</span>
+</form>
+</body>
+</html>

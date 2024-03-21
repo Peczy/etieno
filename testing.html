@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Validation and Events</title>
+    <style>
+        .error {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+
+<form id="myForm" onsubmit="return validateForm()">
+    <div>
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" maxlength="20"><br>
+    </div>
+    <div>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br>
+    </div>
+    <div>
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message"></textarea><br>
+    </div>
+    <div>
+        <label>Gender:</label><br>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label><br>
+    </div>
+    <div>
+        <label for="country">Country:</label><br>
+        <select id="country" name="country">
+            <option value="usa">USA</option>
+            <option value="canada">Canada</option>
+            <option value="uk">UK</option>
+        </select><br>
+    </div>
+    <div>
+        <label for="avatar">Upload Avatar:</label><br>
+        <input type="file" id="avatar" name="avatar"><br>
+    </div>
+    <div>
+        <input type="checkbox" id="agree" name="agree" onclick="displayMessage()">
+        <label for="agree">I agree to the terms and conditions</label><br>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+<p id="checkboxMessage" style="display: none;">That is amazing.</p>
+
+<script>
+    function validateForm() {
+        var name = document.getElementById('name').value.trim();
+        var email = document.getElementById('email').value.trim();
+        var message = document.getElementById('message').value.trim();
+        var error = false;
+
+        if (name === '') {
+            alert("Please enter your details");
+            document.getElementById('name').classList.add('error');
+            error = true;
+        } else {
+            document.getElementById('name').classList.remove('error');
+        }
+
+        if (email === '') {
+            alert("Please enter your details");
+            document.getElementById('email').classList.add('error');
+            error = true;
+        } else {
+            document.getElementById('email').classList.remove('error');
+        }
+
+        if (name.length > 20) {
+            alert("Name cannot exceed 20 characters");
+            document.getElementById('name').classList.add('error');
+            error = true;
+        }
+
+        if (!error) {
+            alert("Thank you for submitting your form. Name: " + name);
+            return true;
+        }
+
+        return false;
+    }
+
+    function displayMessage() {
+        var checkbox = document.getElementById('agree');
+        var message = document.getElementById('checkboxMessage');
+
+        if (checkbox.checked) {
+            message.style.display = 'block';
+        } else {
+            message.style.display = 'none';
+        }
+    }
+</script>
+
+</body>
+</html>
